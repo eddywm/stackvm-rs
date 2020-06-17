@@ -1,30 +1,30 @@
 
 // Integers basic ops (Addition, Subtraction & Multiplication)
-pub static IADD: i16 = 1;
-pub static ISUB: i16 = 2;
-pub static IMULT: i16 = 3;
+pub const IADD: i16 = 1;
+pub const ISUB: i16 = 2;
+pub const IMULT: i16 = 3;
 
 // Comparison (Less Than & Less Than)
-pub static ILET: i16 = 4;
-pub static IEQ : i16= 5;
+pub const ILET: i16 = 4;
+pub const IEQ : i16= 5;
 
 // Branching (Branch; Branch if true & if false)
-pub static BR : i16= 6;
-pub static BRT: i16 = 7;
-pub static BRF: i16 = 8;
+pub const BR : i16= 6;
+pub const BRT: i16 = 7;
+pub const BRF: i16 = 8;
 
-pub static ICONST: i16 = 9; // Push constant integer
-pub static LOAD: i16 = 10; // Load from local context
-pub static GLOAD: i16 = 11; // Load from global memory
-pub static STORE: i16 = 12; // Store in local context
-pub static GSTORE: i16 = 13; // Store in global memory
+pub const ICONST: i16 = 9; // Push constant integer
+pub const LOAD: i16 = 10; // Load from local context
+pub const GLOAD: i16 = 11; // Load from global memory
+pub const STORE: i16 = 12; // Store in local context
+pub const GSTORE: i16 = 13; // Store in global memory
 
-pub static PRINT: i16 = 14; // Print stack top
-pub static POP: i16 = 15;// Throw away top of stack
+pub const PRINT: i16 = 14; // Print stack top
+pub const POP: i16 = 15;// Throw away top of stack
 
 // Return with/without value
-pub static CALL: i16 = 16;
-pub static RET : i16= 17;
+pub const CALL: i16 = 16;
+pub const RET : i16= 17;
 
 
 pub struct Instruction {
