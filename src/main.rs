@@ -1,6 +1,8 @@
+use crate::lib::IADD;
+
 mod lib;
 fn main() {
-    let iadd = lib::Instruction{ name: String::from("iadd"), agrs: 0 };
+    let iadd = lib::get_instruction(IADD);
 
     println!("Instruction : {}", iadd.str());
 }

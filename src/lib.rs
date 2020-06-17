@@ -35,17 +35,20 @@ pub struct Instruction {
 
 impl Instruction {
     pub fn str(&self) -> String {
-        return format!("| name:{} args: {} |", self.name, self.agrs);
+        return format!("[name:{} args: {}]", self.name, self.agrs);
     }
 
-    pub fn get_all(_opcode: i16) -> Vec<Instruction> {
-        return vec![];
-    }
 }
 
 pub fn get_instruction(opcode: i16) -> Instruction {
     match opcode {
         IADD => Instruction { name: String::from("iadd"), agrs: 0 },
+        ISUB => Instruction { name: String::from("isub"), agrs: 0 },
+        IMULT => Instruction { name: String::from("imult"), agrs: 0 },
+        ILET => Instruction { name: String::from("ilet"), agrs: 0 },
+        IEQ => Instruction { name: String::from("ieq"), agrs: 0 },
+        BR => Instruction { name: String::from("ieq"), agrs: 1 },
+        BRT => Instruction { name: String::from("ieq"), agrs: 1 },
 
         _ => Instruction { name: String::from("nil"), agrs: 0 }
     }
