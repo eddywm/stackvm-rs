@@ -37,18 +37,22 @@ impl Instruction {
     pub fn str(&self) -> String {
         return format!("[name:{} args: {}]", self.name, self.agrs);
     }
-
 }
 
-pub fn get_instruction(opcode: i16) -> Instruction {
-    match opcode {
-        IADD => Instruction { name: String::from("iadd"), agrs: 0 },
-        ISUB => Instruction { name: String::from("isub"), agrs: 0 },
-        IMULT => Instruction { name: String::from("imult"), agrs: 0 },
-        ILET => Instruction { name: String::from("ilet"), agrs: 0 },
-        IEQ => Instruction { name: String::from("ieq"), agrs: 0 },
-        BR => Instruction { name: String::from("ieq"), agrs: 1 },
-        BRT => Instruction { name: String::from("ieq"), agrs: 1 },
+pub fn instruction_new(_name: &str, _args: i8) -> Instruction {
+    return Instruction { name: _name.to_string(), agrs: _args };
+}
+
+// Instructions mapping
+pub fn inst_mapping(_opcode: i16) -> Instruction {
+    match _opcode {
+        IADD => instruction_new("iadd", 0),
+        ISUB => instruction_new("isub", 0),
+        IMULT => instruction_new("imult", 0),
+        ILET => instruction_new("ilet", 0),
+        IEQ => instruction_new("ieq", 0),
+        BR => instruction_new("ieq", 1),
+        BRT => instruction_new("ieq", 1),
 
         _ => Instruction { name: String::from("nil"), agrs: 0 }
     }
