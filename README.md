@@ -7,4 +7,4 @@ The entry point is in the `main.rs` file and the vm code is in the `src/lib.rs` 
 
 
 
-> Note that this repo is under ongoing development and new updates will be pushed here from to time.
+> Note that this repo is under ongoing development and new updates will be pushed here from to time to time.
