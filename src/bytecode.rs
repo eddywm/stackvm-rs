@@ -1,11 +1,14 @@
-#[derive(Copy, Clone)]
-pub struct Instruction<'a> {
-    pub name: &'a str, // Instruction name
+pub struct Instruction {
+    pub name: String, // Instruction name
     pub agrs: i8, // Number of arguments
 }
 
-impl Instruction<'_> {
+impl Instruction {
     pub fn str(&self) -> String {
-        return format!("name:{} args: {}", self.name, self.agrs);
+        return format!("| name:{} args: {} |", self.name, self.agrs);
+    }
+
+    pub fn get_all(_opcode: i16) -> Vec<Instruction>{
+        return vec![]
     }
 }
