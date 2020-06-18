@@ -25,6 +25,7 @@ pub const POP: i16 = 15;// Throw away top of stack
 // Return with/without value
 pub const CALL: i16 = 16;
 pub const RET : i16= 17;
+pub const HALT : i16= 18;
 
 
 pub struct Instruction {
@@ -61,6 +62,13 @@ pub fn inst_mapping(_opcode: i16) -> Instruction {
         GLOAD => instruction_new("gload", 1),
         STORE => instruction_new("store", 1),
         GSTORE => instruction_new("gstore", 1),
+
+        PRINT => instruction_new("print", 0),
+        POP => instruction_new("pop", 0),
+        CALL => instruction_new("call", 1),
+
+        RET => instruction_new("ret", 0),
+        HALT => instruction_new("hat", 0),
 
         _ => instruction_new("nil", 0 )
     }
