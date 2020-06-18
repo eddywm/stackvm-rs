@@ -40,37 +40,37 @@ impl Instruction {
     }
 }
 
-pub fn instruction_new(_name: &str, _args: i8) -> Instruction {
+pub fn inst_new(_name: &str, _args: i8) -> Instruction {
     return Instruction { name: _name.to_string(), agrs: _args };
 }
 
 // Instructions mapping
 pub fn inst_mapping(_opcode: i8) -> Instruction {
     match _opcode {
-        IADD => instruction_new("iadd", 0),
-        ISUB => instruction_new("isub", 0),
-        IMULT => instruction_new("imult", 0),
+        IADD => inst_new("iadd", 0),
+        ISUB => inst_new("isub", 0),
+        IMULT => inst_new("imult", 0),
 
-        ILET => instruction_new("ilet", 0),
-        IEQ => instruction_new("ieq", 0),
-        BR => instruction_new("ieq", 1),
-        BRT => instruction_new("brt", 1),
-        BRF => instruction_new("brf", 1),
+        ILET => inst_new("ilet", 0),
+        IEQ => inst_new("ieq", 0),
+        BR => inst_new("ieq", 1),
+        BRT => inst_new("brt", 1),
+        BRF => inst_new("brf", 1),
 
-        ICONST => instruction_new("iconst", 1),
-        LOAD => instruction_new("load", 1),
-        GLOAD => instruction_new("gload", 1),
-        STORE => instruction_new("store", 1),
-        GSTORE => instruction_new("gstore", 1),
+        ICONST => inst_new("iconst", 1),
+        LOAD => inst_new("load", 1),
+        GLOAD => inst_new("gload", 1),
+        STORE => inst_new("store", 1),
+        GSTORE => inst_new("gstore", 1),
 
-        PRINT => instruction_new("print", 0),
-        POP => instruction_new("pop", 0),
-        CALL => instruction_new("call", 1),
+        PRINT => inst_new("print", 0),
+        POP => inst_new("pop", 0),
+        CALL => inst_new("call", 1),
 
-        RET => instruction_new("ret", 0),
-        HALT => instruction_new("hat", 0),
+        RET => inst_new("ret", 0),
+        HALT => inst_new("hat", 0),
 
-        _ => instruction_new("nil", 0 )
+        _ => inst_new("nil", 0 )
     }
 }
 
