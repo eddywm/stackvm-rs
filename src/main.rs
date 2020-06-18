@@ -1,8 +1,6 @@
-use crate::lib::IADD;
+use crate::lib::*;
 
 mod lib;
 fn main() {
-    let iadd = lib::inst_mapping(IADD);
-
-    println!("Instruction : {}", iadd.str());
+    println!("Hello VM !");
 }
