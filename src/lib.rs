@@ -49,14 +49,18 @@ pub fn inst_mapping(_opcode: i16) -> Instruction {
         IADD => instruction_new("iadd", 0),
         ISUB => instruction_new("isub", 0),
         IMULT => instruction_new("imult", 0),
+
         ILET => instruction_new("ilet", 0),
         IEQ => instruction_new("ieq", 0),
         BR => instruction_new("ieq", 1),
         BRT => instruction_new("brt", 1),
         BRF => instruction_new("brf", 1),
+
         ICONST => instruction_new("iconst", 1),
         LOAD => instruction_new("load", 1),
         GLOAD => instruction_new("gload", 1),
+        STORE => instruction_new("store", 1),
+        GSTORE => instruction_new("gstore", 1),
 
         _ => instruction_new("nil", 0 )
     }
@@ -64,7 +68,7 @@ pub fn inst_mapping(_opcode: i16) -> Instruction {
 
 
 #[test]
-fn test_instruction() {
+fn test_instruction_mapping() {
     let iadd = inst_mapping(IADD);
     assert_eq!(iadd.name,   String::from("iadd"))
 }
