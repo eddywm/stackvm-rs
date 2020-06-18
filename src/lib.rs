@@ -1,31 +1,31 @@
 
 // Integers basic ops (Addition, Subtraction & Multiplication)
-pub const IADD: i16 = 1;
-pub const ISUB: i16 = 2;
-pub const IMULT: i16 = 3;
+pub const IADD: i8 = 1;
+pub const ISUB: i8 = 2;
+pub const IMULT: i8 = 3;
 
 // Comparison (Less Than & Less Than)
-pub const ILET: i16 = 4;
-pub const IEQ : i16= 5;
+pub const ILET: i8 = 4;
+pub const IEQ : i8= 5;
 
 // Branching (Branch; Branch if true & if false)
-pub const BR : i16= 6;
-pub const BRT: i16 = 7;
-pub const BRF: i16 = 8;
+pub const BR : i8= 6;
+pub const BRT: i8 = 7;
+pub const BRF: i8 = 8;
 
-pub const ICONST: i16 = 9; // Push constant integer
-pub const LOAD: i16 = 10; // Load from local context
-pub const GLOAD: i16 = 11; // Load from global memory
-pub const STORE: i16 = 12; // Store in local context
-pub const GSTORE: i16 = 13; // Store in global memory
+pub const ICONST: i8 = 9; // Push constant integer
+pub const LOAD: i8 = 10; // Load from local context
+pub const GLOAD: i8 = 11; // Load from global memory
+pub const STORE: i8 = 12; // Store in local context
+pub const GSTORE: i8 = 13; // Store in global memory
 
-pub const PRINT: i16 = 14; // Print stack top
-pub const POP: i16 = 15;// Throw away top of stack
+pub const PRINT: i8 = 14; // Print stack top
+pub const POP: i8 = 15;// Throw away top of stack
 
 // Return with/without value
-pub const CALL: i16 = 16;
-pub const RET : i16= 17;
-pub const HALT : i16= 18;
+pub const CALL: i8 = 16;
+pub const RET : i8= 17;
+pub const HALT : i8= 18;
 
 
 pub struct Instruction {
@@ -45,7 +45,7 @@ pub fn instruction_new(_name: &str, _args: i8) -> Instruction {
 }
 
 // Instructions mapping
-pub fn inst_mapping(_opcode: i16) -> Instruction {
+pub fn inst_mapping(_opcode: i8) -> Instruction {
     match _opcode {
         IADD => instruction_new("iadd", 0),
         ISUB => instruction_new("isub", 0),
@@ -74,9 +74,16 @@ pub fn inst_mapping(_opcode: i16) -> Instruction {
     }
 }
 
+#[test]
+fn test_instruction_byte_mapping() {
+
+}
 
 #[test]
 fn test_instruction_mapping() {
     let iadd = inst_mapping(IADD);
-    assert_eq!(iadd.name,   String::from("iadd"))
+    assert_eq!(iadd.name,   String::from("iadd"));
+
+    let gstore = inst_mapping(GSTORE);
+    assert_eq!(gstore.name,   String::from("gstore"));
 }
