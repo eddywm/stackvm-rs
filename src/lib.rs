@@ -76,7 +76,11 @@ pub fn inst_mapping(_opcode: i8) -> Instruction {
 
 #[test]
 fn test_instruction_byte_mapping() {
-
+    assert_eq!(IADD, 1);
+    assert_eq!(IEQ, 5);
+    assert_eq!(BRF, 8);
+    assert_eq!(GSTORE, 13);
+    assert_eq!(RET, 17);
 }
 
 #[test]
