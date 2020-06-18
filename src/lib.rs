@@ -1,6 +1,18 @@
 /// This is a single file implementation of a fairly simple stack based VM
 /// The goal is to support the common basic primitives operations like
 /// iadd, isub, imult, comparisons, branching, memory ops, etc, ....
+///
+///          __
+///  _(\    |@@|
+/// (__/\__ \--/ __
+///    \___|----|  |   __
+///        \ }{ /\ )_ / _\
+///        /\__/\ \__O (__
+///       (--/\--)    \__/
+///        _ )(  )(_
+///      `---''---`
+///
+/// /////////////////////////////////////////////////////////////////////
 
 
 // Integers basic ops (Addition, Subtraction & Multiplication)
