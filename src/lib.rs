@@ -90,6 +90,15 @@ pub fn inst_mapping(_opcode: i8) -> Instruction {
     }
 }
 
+
+pub struct FuncMetadata {
+    pub name: String,
+    pub nargs: i8,
+    pub nlocals: i8,
+    pub address: i8 // byte-code address
+}
+
+
 #[test]
 fn test_instruction_byte_mapping() {
     assert_eq!(IADD, 1);
