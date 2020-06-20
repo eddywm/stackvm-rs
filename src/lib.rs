@@ -98,6 +98,12 @@ pub struct FuncMetadata {
     pub address: i8 // byte-code address
 }
 
+pub struct Context {
+    pub context: Box<Context>,
+    pub metadata: FuncMetadata,
+    pub returnip: i32, // Return instruction pointer
+    pub locals: Vec<i8>
+}
 
 #[test]
 fn test_instruction_byte_mapping() {
