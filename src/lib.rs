@@ -105,6 +105,15 @@ pub struct Context {
     pub locals: Vec<i8>
 }
 
+const  DEFAULT_STACK_SIZE: i32 = 1000;
+const  DEFAULT_CALL_STACK_SIZE: i32 = 1000;
+const  FALSE: i32 = 0;
+const  TRUE: i32 = 1;
+
+pub struct VM {
+
+}
+
 #[test]
 fn test_instruction_byte_mapping() {
     assert_eq!(IADD, 1);
