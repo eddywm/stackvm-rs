@@ -111,7 +111,8 @@ const  FALSE: i32 = 0;
 const  TRUE: i32 = 1;
 
 pub struct VM {
-
+    pub ipr: i32, // Instruction pointer register
+    pub spr: i32, // Stack pointer register
 }
 
 #[test]
