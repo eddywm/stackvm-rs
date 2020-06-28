@@ -113,6 +113,15 @@ const  TRUE: i32 = 1;
 pub struct VM {
     pub ipr: i32, // Instruction pointer register
     pub spr: i32, // Stack pointer register
+
+    pub code_memory: Vec<i8>,
+    pub globals_space: Vec<i8>,
+    pub operand_stack: Vec<i8>,
+
+    pub context: Context,
+    pub metadata: Vec<FuncMetadata>,
+
+    pub is_trace_enabled: bool
 }
 
 #[test]
