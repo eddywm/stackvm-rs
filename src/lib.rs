@@ -108,14 +108,18 @@ pub struct FuncMetadata {
     pub name: String,
     pub nargs: i8,
     pub nlocals: i8,
-    pub address: i8, // byte-code address
+
+    // byte-code address
+    pub address: i8,
 }
 
 pub struct Context {
     pub context: Box<Context>,
     pub metadata: FuncMetadata,
-    pub returnip: i32,
+
     // Return instruction pointer
+    pub returnip: i32,
+
     pub locals: Vec<i8>,
 }
 
@@ -125,9 +129,11 @@ const FALSE: i32 = 0;
 const TRUE: i32 = 1;
 
 pub struct VM {
-    pub ipr: i32,
     // Instruction pointer register
-    pub spr: i32, // Stack pointer register
+    pub ipr: i32,
+
+    // Stack pointer register
+    pub spr: i32,
 
     pub code_memory: Vec<i8>,
     pub globals_space: Vec<i8>,
