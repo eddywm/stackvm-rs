@@ -15,6 +15,8 @@
 /// /////////////////////////////////////////////////////////////////////
 
 
+// TODO : Move these opcodes to an enum
+
 // Integers basic ops (Addition, Subtraction & Multiplication)
 pub const IADD: u8 = 1;
 pub const ISUB: u8 = 2;
@@ -72,7 +74,7 @@ impl Instruction {
         return Instruction { name: _name.to_string(), agrs: _args };
     }
 }
-
+// TODO : Implement from straight here ::
 // Instructions mapping
 pub fn inst_mapping(_opcode: u8) -> Instruction {
     match _opcode {
