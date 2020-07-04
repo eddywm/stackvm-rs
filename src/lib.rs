@@ -16,44 +16,44 @@
 
 
 // Integers basic ops (Addition, Subtraction & Multiplication)
-pub const IADD: i8 = 1;
-pub const ISUB: i8 = 2;
-pub const IMULT: i8 = 3;
+pub const IADD: u8 = 1;
+pub const ISUB: u8 = 2;
+pub const IMULT: u8 = 3;
 
 // Comparison (Less Than & Less Than)
-pub const ILET: i8 = 4;
-pub const IEQ: i8 = 5;
+pub const ILET: u8 = 4;
+pub const IEQ: u8 = 5;
 
 // Branching (Branch; Branch if true & if false)
-pub const BR: i8 = 6;
-pub const BRT: i8 = 7;
-pub const BRF: i8 = 8;
+pub const BR: u8 = 6;
+pub const BRT: u8 = 7;
+pub const BRF: u8 = 8;
 
 // Push constant integer
-pub const ICONST: i8 = 9;
+pub const ICONST: u8 = 9;
 
 // Load from local context
-pub const LOAD: i8 = 10;
+pub const LOAD: u8 = 10;
 
 // Load from global memory
-pub const GLOAD: i8 = 11;
+pub const GLOAD: u8 = 11;
 
 // Store in local context
-pub const STORE: i8 = 12;
+pub const STORE: u8 = 12;
 
 // Store in global memory
-pub const GSTORE: i8 = 13;
+pub const GSTORE: u8 = 13;
 
 // Print stack top
-pub const PRINT: i8 = 14;
+pub const PRINT: u8 = 14;
 
 // Throw away top of stack
-pub const POP: i8 = 15;
+pub const POP: u8 = 15;
 
 // Return with/without value
-pub const CALL: i8 = 16;
-pub const RET: i8 = 17;
-pub const HALT: i8 = 18;
+pub const CALL: u8 = 16;
+pub const RET: u8 = 17;
+pub const HALT: u8 = 18;
 
 
 pub struct Instruction {
@@ -61,20 +61,20 @@ pub struct Instruction {
     pub name: String,
 
     // Number of arguments
-    pub agrs: i8,
+    pub agrs: u8,
 }
 
 impl Instruction {
     pub fn str(&self) -> String {
         return format!("[name:{} args: {}]", self.name, self.agrs);
     }
-    pub fn new(_name: &str, _args: i8) -> Instruction {
+    pub fn new(_name: &str, _args: u8) -> Instruction {
         return Instruction { name: _name.to_string(), agrs: _args };
     }
 }
 
 // Instructions mapping
-pub fn inst_mapping(_opcode: i8) -> Instruction {
+pub fn inst_mapping(_opcode: u8) -> Instruction {
     match _opcode {
         IADD => Instruction::new("iadd", 0),
         ISUB => Instruction::new("isub", 0),
