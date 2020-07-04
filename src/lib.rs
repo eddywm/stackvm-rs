@@ -54,39 +54,38 @@ impl Instruction {
     pub fn str(&self) -> String {
         return format!("[name:{} args: {}]", self.name, self.agrs);
     }
-}
-
-pub fn inst_new(_name: &str, _args: i8) -> Instruction {
-    return Instruction { name: _name.to_string(), agrs: _args };
+    pub fn new(_name: &str, _args: i8) -> Instruction {
+        return Instruction { name: _name.to_string(), agrs: _args };
+    }
 }
 
 // Instructions mapping
 pub fn inst_mapping(_opcode: i8) -> Instruction {
     match _opcode {
-        IADD => inst_new("iadd", 0),
-        ISUB => inst_new("isub", 0),
-        IMULT => inst_new("imult", 0),
+        IADD => Instruction::new("iadd", 0),
+        ISUB => Instruction::new("isub", 0),
+        IMULT => Instruction::new("imult", 0),
 
-        ILET => inst_new("ilet", 0),
-        IEQ => inst_new("ieq", 0),
-        BR => inst_new("ieq", 1),
-        BRT => inst_new("brt", 1),
-        BRF => inst_new("brf", 1),
+        ILET => Instruction::new("ilet", 0),
+        IEQ => Instruction::new("ieq", 0),
+        BR => Instruction::new("ieq", 1),
+        BRT => Instruction::new("brt", 1),
+        BRF => Instruction::new("brf", 1),
 
-        ICONST => inst_new("iconst", 1),
-        LOAD => inst_new("load", 1),
-        GLOAD => inst_new("gload", 1),
-        STORE => inst_new("store", 1),
-        GSTORE => inst_new("gstore", 1),
+        ICONST => Instruction::new("iconst", 1),
+        LOAD => Instruction::new("load", 1),
+        GLOAD => Instruction::new("gload", 1),
+        STORE => Instruction::new("store", 1),
+        GSTORE => Instruction::new("gstore", 1),
 
-        PRINT => inst_new("print", 0),
-        POP => inst_new("pop", 0),
-        CALL => inst_new("call", 1),
+        PRINT => Instruction::new("print", 0),
+        POP => Instruction::new("pop", 0),
+        CALL => Instruction::new("call", 1),
 
-        RET => inst_new("ret", 0),
-        HALT => inst_new("hat", 0),
+        RET => Instruction::new("ret", 0),
+        HALT => Instruction::new("hat", 0),
 
-        _ => inst_new("nil", 0 )
+        _ => Instruction::new("nil", 0 )
     }
 }
 
