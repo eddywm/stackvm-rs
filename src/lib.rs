@@ -22,32 +22,46 @@ pub const IMULT: i8 = 3;
 
 // Comparison (Less Than & Less Than)
 pub const ILET: i8 = 4;
-pub const IEQ : i8= 5;
+pub const IEQ: i8 = 5;
 
 // Branching (Branch; Branch if true & if false)
-pub const BR : i8= 6;
+pub const BR: i8 = 6;
 pub const BRT: i8 = 7;
 pub const BRF: i8 = 8;
 
-pub const ICONST: i8 = 9; // Push constant integer
-pub const LOAD: i8 = 10; // Load from local context
-pub const GLOAD: i8 = 11; // Load from global memory
-pub const STORE: i8 = 12; // Store in local context
-pub const GSTORE: i8 = 13; // Store in global memory
+// Push constant integer
+pub const ICONST: i8 = 9;
 
-pub const PRINT: i8 = 14; // Print stack top
-pub const POP: i8 = 15;// Throw away top of stack
+// Load from local context
+pub const LOAD: i8 = 10;
+
+// Load from global memory
+pub const GLOAD: i8 = 11;
+
+// Store in local context
+pub const STORE: i8 = 12;
+
+// Store in global memory
+pub const GSTORE: i8 = 13;
+
+// Print stack top
+pub const PRINT: i8 = 14;
+
+// Throw away top of stack
+pub const POP: i8 = 15;
 
 // Return with/without value
 pub const CALL: i8 = 16;
-pub const RET : i8= 17;
-pub const HALT : i8= 18;
+pub const RET: i8 = 17;
+pub const HALT: i8 = 18;
 
 
 pub struct Instruction {
-    pub name: String,
     // Instruction name
-    pub agrs: i8, // Number of arguments
+    pub name: String,
+
+    // Number of arguments
+    pub agrs: i8,
 }
 
 impl Instruction {
@@ -85,7 +99,7 @@ pub fn inst_mapping(_opcode: i8) -> Instruction {
         RET => Instruction::new("ret", 0),
         HALT => Instruction::new("hat", 0),
 
-        _ => Instruction::new("nil", 0 )
+        _ => Instruction::new("nil", 0)
     }
 }
 
@@ -94,23 +108,25 @@ pub struct FuncMetadata {
     pub name: String,
     pub nargs: i8,
     pub nlocals: i8,
-    pub address: i8 // byte-code address
+    pub address: i8, // byte-code address
 }
 
 pub struct Context {
     pub context: Box<Context>,
     pub metadata: FuncMetadata,
-    pub returnip: i32, // Return instruction pointer
-    pub locals: Vec<i8>
+    pub returnip: i32,
+    // Return instruction pointer
+    pub locals: Vec<i8>,
 }
 
-const  DEFAULT_STACK_SIZE: i32 = 1000;
-const  DEFAULT_CALL_STACK_SIZE: i32 = 1000;
-const  FALSE: i32 = 0;
-const  TRUE: i32 = 1;
+const DEFAULT_STACK_SIZE: i32 = 1000;
+const DEFAULT_CALL_STACK_SIZE: i32 = 1000;
+const FALSE: i32 = 0;
+const TRUE: i32 = 1;
 
 pub struct VM {
-    pub ipr: i32, // Instruction pointer register
+    pub ipr: i32,
+    // Instruction pointer register
     pub spr: i32, // Stack pointer register
 
     pub code_memory: Vec<i8>,
@@ -120,23 +136,28 @@ pub struct VM {
     pub context: Context,
     pub metadata: Vec<FuncMetadata>,
 
-    pub is_trace_enabled: bool
+    pub is_trace_enabled: bool,
 }
 
-#[test]
-fn test_instruction_byte_mapping() {
-    assert_eq!(IADD, 1);
-    assert_eq!(IEQ, 5);
-    assert_eq!(BRF, 8);
-    assert_eq!(GSTORE, 13);
-    assert_eq!(RET, 17);
-}
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-#[test]
-fn test_instruction_mapping() {
-    let iadd = inst_mapping(IADD);
-    assert_eq!(iadd.name,   String::from("iadd"));
+    #[test]
+    fn test_instruction_byte_mapping() {
+        assert_eq!(IADD, 1);
+        assert_eq!(IEQ, 5);
+        assert_eq!(BRF, 8);
+        assert_eq!(GSTORE, 13);
+        assert_eq!(RET, 17);
+    }
 
-    let gstore = inst_mapping(GSTORE);
-    assert_eq!(gstore.name,   String::from("gstore"));
+    #[test]
+    fn test_instruction_mapping() {
+        let iadd = inst_mapping(IADD);
+        assert_eq!(iadd.name, String::from("iadd"));
+
+        let gstore = inst_mapping(GSTORE);
+        assert_eq!(gstore.name, String::from("gstore"));
+    }
 }
