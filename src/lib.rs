@@ -1,8 +1,10 @@
+/*
+/////////////////////////////////////////////////////////////////////////
 /// This is a single file implementation of a fairly simple stack based VM
 /// The goal is to support the common basic primitives operations like
 /// iadd, isub, imult, comparisons, branching, memory ops, etc, ....
 ///
-///          __
+///          ___
 ///  _(\    |@@|
 /// (__/\__ \--/ __
 ///    \___|----|  |   __
@@ -13,6 +15,7 @@
 ///      `---''---`
 ///
 /// /////////////////////////////////////////////////////////////////////
+*/
 
 #[derive(Debug, PartialEq)]
 pub enum Opcode {
