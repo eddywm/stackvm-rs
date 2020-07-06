@@ -68,6 +68,9 @@ impl From<u8> for Opcode {
             3 => Opcode::IMULT,
             4 => Opcode::ILET,
             5 => Opcode::IEQ,
+            6 => Opcode::BR,
+            7 => Opcode::BRT,
+            8 => Opcode::BRF,
             _ => Opcode::IGL
         }
     }
@@ -170,7 +173,7 @@ mod tests {
     fn test_instruction_byte_mapping() {
         assert_eq!(Opcode::IADD, Opcode::from(0x1));
         assert_eq!(Opcode::IEQ, Opcode::from(0x5));
-//        assert_eq!(BRF, 8);
+        assert_eq!(Opcode::BRF, Opcode::from(0x8));
 //        assert_eq!(GSTORE, 13);
 //        assert_eq!(RET, 17);
     }
