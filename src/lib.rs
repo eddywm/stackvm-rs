@@ -14,7 +14,8 @@
 ///
 /// /////////////////////////////////////////////////////////////////////
 
-enum Opcode {
+#[derive(Debug, PartialEq)]
+pub enum Opcode {
     // Integers basic ops (Addition, Subtraction & Multiplication)
     IADD,
     ISUB,
@@ -54,6 +55,22 @@ enum Opcode {
     CALL,
     RET,
     HALT,
+
+    // Illegacl opcode
+    IGL,
+}
+
+impl From<u8> for Opcode {
+     fn from(byte: u8) -> Self {
+        match byte {
+            1 => Opcode::IADD,
+            2 => Opcode::ISUB,
+            3 => Opcode::IMULT,
+            4 => Opcode::ILET,
+            5 => Opcode::IEQ,
+            _ => Opcode::IGL
+        }
+    }
 }
 
 
@@ -74,7 +91,6 @@ impl Instruction {
     }
 }
 
-// TODO : Implement from straight here ::
 // Instructions mapping
 pub fn inst_mapping(_opcode: Opcode) -> Instruction {
     return match _opcode {
@@ -100,6 +116,7 @@ pub fn inst_mapping(_opcode: Opcode) -> Instruction {
 
         Opcode::RET => Instruction::new("ret", 0),
         Opcode::HALT => Instruction::new("hat", 0),
+        _ => Instruction::new("igl", 0)
     }
 }
 
@@ -151,19 +168,19 @@ mod tests {
 
     #[test]
     fn test_instruction_byte_mapping() {
-        assert_eq!(IADD, 1);
-        assert_eq!(IEQ, 5);
-        assert_eq!(BRF, 8);
-        assert_eq!(GSTORE, 13);
-        assert_eq!(RET, 17);
+        assert_eq!(Opcode::IADD, Opcode::from(0x1));
+        assert_eq!(Opcode::IEQ, Opcode::from(0x5));
+//        assert_eq!(BRF, 8);
+//        assert_eq!(GSTORE, 13);
+//        assert_eq!(RET, 17);
     }
 
     #[test]
     fn test_instruction_mapping() {
-        let iadd = inst_mapping(IADD);
+        let iadd = inst_mapping(Opcode::IADD);
         assert_eq!(iadd.name, String::from("iadd"));
 
-        let gstore = inst_mapping(GSTORE);
+        let gstore = inst_mapping(Opcode::GSTORE);
         assert_eq!(gstore.name, String::from("gstore"));
     }
 }
