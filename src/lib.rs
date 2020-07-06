@@ -14,48 +14,47 @@
 ///
 /// /////////////////////////////////////////////////////////////////////
 
+enum Opcode {
+    // Integers basic ops (Addition, Subtraction & Multiplication)
+    IADD,
+    ISUB,
+    IMULT,
 
-// TODO : Move these opcodes to an enum
+    // Comparison (Less Than & Less Than)
+    ILET,
+    IEQ,
 
-// Integers basic ops (Addition, Subtraction & Multiplication)
-pub const IADD: u8 = 1;
-pub const ISUB: u8 = 2;
-pub const IMULT: u8 = 3;
+    // Branching (Branch, Branch if true & if false)
+    BR,
+    BRT,
+    BRF,
 
-// Comparison (Less Than & Less Than)
-pub const ILET: u8 = 4;
-pub const IEQ: u8 = 5;
+    // Push constant integer
+    ICONST,
 
-// Branching (Branch; Branch if true & if false)
-pub const BR: u8 = 6;
-pub const BRT: u8 = 7;
-pub const BRF: u8 = 8;
+    // Load from local context
+    LOAD,
 
-// Push constant integer
-pub const ICONST: u8 = 9;
+    // Load from global memory
+    GLOAD,
 
-// Load from local context
-pub const LOAD: u8 = 10;
+    // Store in local context
+    STORE,
 
-// Load from global memory
-pub const GLOAD: u8 = 11;
+    // Store in global memory
+    GSTORE,
 
-// Store in local context
-pub const STORE: u8 = 12;
+    // Print stack top
+    PRINT,
 
-// Store in global memory
-pub const GSTORE: u8 = 13;
+    // Throw away top of stack
+    POP,
 
-// Print stack top
-pub const PRINT: u8 = 14;
-
-// Throw away top of stack
-pub const POP: u8 = 15;
-
-// Return with/without value
-pub const CALL: u8 = 16;
-pub const RET: u8 = 17;
-pub const HALT: u8 = 18;
+    // Return with/without value
+    CALL,
+    RET,
+    HALT,
+}
 
 
 pub struct Instruction {
@@ -74,34 +73,33 @@ impl Instruction {
         return Instruction { name: _name.to_string(), agrs: _args };
     }
 }
+
 // TODO : Implement from straight here ::
 // Instructions mapping
-pub fn inst_mapping(_opcode: u8) -> Instruction {
-    match _opcode {
-        IADD => Instruction::new("iadd", 0),
-        ISUB => Instruction::new("isub", 0),
-        IMULT => Instruction::new("imult", 0),
+pub fn inst_mapping(_opcode: Opcode) -> Instruction {
+    return match _opcode {
+        Opcode::IADD => Instruction::new("iadd", 0),
+        Opcode::ISUB => Instruction::new("isub", 0),
+        Opcode::IMULT => Instruction::new("imult", 0),
 
-        ILET => Instruction::new("ilet", 0),
-        IEQ => Instruction::new("ieq", 0),
-        BR => Instruction::new("ieq", 1),
-        BRT => Instruction::new("brt", 1),
-        BRF => Instruction::new("brf", 1),
+        Opcode::ILET => Instruction::new("ilet", 0),
+        Opcode::IEQ => Instruction::new("ieq", 0),
+        Opcode::BR => Instruction::new("ieq", 1),
+        Opcode::BRT => Instruction::new("brt", 1),
+        Opcode::BRF => Instruction::new("brf", 1),
 
-        ICONST => Instruction::new("iconst", 1),
-        LOAD => Instruction::new("load", 1),
-        GLOAD => Instruction::new("gload", 1),
-        STORE => Instruction::new("store", 1),
-        GSTORE => Instruction::new("gstore", 1),
+        Opcode::ICONST => Instruction::new("iconst", 1),
+        Opcode::LOAD => Instruction::new("load", 1),
+        Opcode::GLOAD => Instruction::new("gload", 1),
+        Opcode::STORE => Instruction::new("store", 1),
+        Opcode::GSTORE => Instruction::new("gstore", 1),
 
-        PRINT => Instruction::new("print", 0),
-        POP => Instruction::new("pop", 0),
-        CALL => Instruction::new("call", 1),
+        Opcode::PRINT => Instruction::new("print", 0),
+        Opcode::POP => Instruction::new("pop", 0),
+        Opcode::CALL => Instruction::new("call", 1),
 
-        RET => Instruction::new("ret", 0),
-        HALT => Instruction::new("hat", 0),
-
-        _ => Instruction::new("nil", 0)
+        Opcode::RET => Instruction::new("ret", 0),
+        Opcode::HALT => Instruction::new("hat", 0),
     }
 }
 
